@@ -1,20 +1,37 @@
-import React from "react";
-import Hero from "./Pages/Hero";
-import NavBar from "./Pages/NavBar";
-import HeadlineCards from "./Pages/HeadLineCards";
-import Clothing from "./Pages/Clothing";
-import Contact from "./Pages/Contact";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./Pages/Home";
+import BestSellers from "./components/BestSellers";
+import News from "./components/News";
+import Accessories from "./components/Accessories";
+import RootLayout from "./Pages/Root";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/maisvendidos",
+        element: <BestSellers />,
+      },
+      {
+        path: "novidades",
+        element: <News />,
+      },
+      {
+        path: "acessorios",
+        element: <Accessories />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div>
-      <NavBar />
-      <Hero />
-      <HeadlineCards />
-      <Clothing />
-      <Contact />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

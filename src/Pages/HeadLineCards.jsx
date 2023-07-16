@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const HeadlineCards = () => {
   return (
@@ -9,7 +10,9 @@ const HeadlineCards = () => {
         <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
           <p className='font-bold text-2xl px-2 pt-4'>Best-Sellers</p>
           <p className='px-2'>As Tendências Mais Quentes!</p>
+          <Link to="/maisvendidos">
           <button className='border-rose-200 bg-rose-100 text-black mx-2 absolute bottom-4'>Ver Agora</button>
+          </Link>
         </div>
         <img
         className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl'
@@ -23,7 +26,9 @@ const HeadlineCards = () => {
         <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
           <p className='font-bold text-2xl px-2 pt-4'>Novidades</p>
           <p className='px-2'>Os Mais Novos Looks</p>
+          <Link to="/novidades">
           <button className='border-rose-200 bg-rose-100 text-black mx-2 absolute bottom-4'>Ver Agora</button>
+          </Link>
         </div>
         <img
         className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl'
@@ -37,7 +42,9 @@ const HeadlineCards = () => {
         <div className='absolute w-full h-full bg-black/50 rounded-xl text-white'>
           <p className='font-bold text-2xl px-2 pt-4'>Acessórios</p>
           <p className='px-2'>Adquira os Detalhes Perfeitos</p>
+          <Link to="/acessorios">
           <button className='border-rose-200 bg-rose-100 text-black mx-2 absolute bottom-4'>Ver Agora</button>
+          </Link>
         </div>
         <img
         className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl'

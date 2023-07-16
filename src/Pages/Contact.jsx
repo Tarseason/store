@@ -20,11 +20,12 @@ const Contact = () => {
         Informações de Contato
       </h1>
       <div className='grid grid-cols-2 md:grid-cols-4 gap-4 py-6'>
-          <div className='bg-rose-100 rounded-lg p-4 flex justify-evenly items-center'>
-            <AiOutlineWhatsApp size={25} color='green'/>
-            <a className='font-bold sm:text-xl' href={whatsappLink} target='blanc'>WhatsApp</a>
-            
-          </div>
+          <a href={whatsappLink} target='blanc'>
+            <div className='bg-rose-100 rounded-lg p-4 flex justify-evenly items-center'>
+              <AiOutlineWhatsApp size={25} color='green'/>
+              <h2 className='font-bold sm:text-xl' >WhatsApp</h2>
+            </div>
+          </a>
 
           <div className='bg-rose-100 rounded-lg p-4 flex justify-evenly items-center'>
             <AiOutlineInstagram size={25} color='#DD2A7B'/>
@@ -36,7 +37,7 @@ const Contact = () => {
 
           <div className='bg-rose-100 rounded-lg p-4 flex justify-evenly items-center'>
             <FiPhoneCall size={25} color='#515BD4'/>
-            <h2 className='font-bold sm:text-xl'>(65) 4002-8922</h2>
+            <h2 className='font-bold sm:text-xl'>Contato</h2>
           </div>
           
           <div className='bg-rose-100 rounded-lg p-4 flex justify-evenly items-center'>

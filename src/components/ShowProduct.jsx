@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { data } from '../data/data.js';
 
-const Clothing = () => {
-  //   console.log(data);
+const ShowProducts = () => {
   const [clothings, setClothings] = useState(data);
 
-  //   Filter Type burgers/pizza/etc
+
   const filterType = (category) => {
     setClothings(
       data.filter((item) => {
@@ -14,54 +13,15 @@ const Clothing = () => {
     );
   };
 
-  //   Filter by price
-  const filterPrice = (price) => {
-    if (price === '$') {
-      setClothings(
-          data.filter((item) => {
-            return item.price <= 50;
-          })
-        );
-        return;
-    }
-
-    if (price === '$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 50 && item.price <= 80;
-        })
-      );
-      return;
-    }
-    if (price === '$$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 80 && item.price <= 120;
-        })
-      );
-      return;
-    }
-    if (price === '$$$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 120   
-        })
-      );
-      return;
-    }
-  };
-
   return (
-    <div className='max-w-[1640px] m-auto px-4 py-12'>
-      <h1 className='text-rose-600 mb-6 font-bold text-4xl text-center'>
-      Vestuário Altamente Avaliado
-      </h1>
+    <div>
+      <div className='max-w-[1640px] m-auto px-4 py-12'>
 
       {/* Filter Row */}
       <div className='flex flex-col lg:flex-row justify-between'>
         {/* Fliter Type */}
         <div>
-          <p className='font-bold mb-2 text-gray-700'>Filter Type</p>
+          <p className='font-bold mb-2 text-gray-700'>Filtro</p>
           <div className='flex justfiy-between flex-wrap mb-4'>
             <button
               onClick={() => setClothings(data)}
@@ -90,40 +50,10 @@ const Clothing = () => {
           </div>
         </div>
 
-        {/* Filter Price */}
-        <div>
-          <p className='font-bold text-gray-700 mb-2'>Filter Price</p>
-          <div className='flex justify-between mb-4
-           max-w-[390px] w-full'>
-            <button
-              onClick={() => filterPrice('$')}
-              className='m-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white'
-            >
-              $
-            </button>
-            <button
-              onClick={() => filterPrice('$$')}
-              className='m-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white'
-            >
-              $$
-            </button>
-            <button
-              onClick={() => filterPrice('$$$')}
-              className='m-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white'
-            >
-              $$$
-            </button>
-            <button
-              onClick={() => filterPrice('$$$$')}
-              className='m-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white'
-            >
-              $$$$
-            </button>
-          </div>
-        </div>
+        
       </div>
 
-      {/* Display foods */}
+      {/* Display */}
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
         {clothings.map((item, index) => (
           <div
@@ -147,7 +77,8 @@ const Clothing = () => {
         ))}
       </div>
     </div>
+    </div>
   );
 };
 
-export default Clothing;
+export default ShowProducts;
