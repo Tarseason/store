@@ -3,7 +3,7 @@ import Hero from "./Pages/Hero";
 import NavBar from "./Pages/NavBar";
 import HeadlineCards from "./Pages/HeadLineCards";
 import Clothing from "./Pages/Clothing";
-import Category from "./Pages/Category";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Hero />
       <HeadlineCards />
       <Clothing />
-      <Category />
+      <Contact />
     </div>
   );
 }
