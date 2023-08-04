@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { data } from '../data/data.js';
+import {setFavorite} from  '../utils/favoriteFunc.js'
+
+import { AiOutlineHeart } from 'react-icons/ai';
 
 const Clothing = () => {
   //   console.log(data);
   const [clothings, setClothings] = useState(data);
 
-  //   Filter Type burgers/pizza/etc
+  //   Filter Type
   const filterType = (category) => {
     setClothings(
       data.filter((item) => {
@@ -141,6 +144,9 @@ const Clothing = () => {
                 <span className='bg-rose-500 text-white p-1 rounded-full'>
                   {` R$ ${item.price.toFixed(2)}`}
                 </span>
+              <button className='none' type='button' onClick={ () => setFavorite(clothings[index])}>
+              <AiOutlineHeart size={30} />
+              </button>
               </p>
             </div>
           </div>
