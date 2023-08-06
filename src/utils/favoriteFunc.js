@@ -1,14 +1,14 @@
-const verifyFavorites = () => {
-  let storedData = JSON.parse(localStorage.getItem("favorites")) || [];
-  if (!storedData) {
-    localStorage.setItem("favorites", []);
-  }
-};
-
 export const getFavorites = () => {
   const dataInStorage = localStorage.getItem("favorites");
-  const favorites = JSON.parse(dataInStorage);
-  return favorites;
+  if (!dataInStorage) {
+    const arr = JSON.stringify([]);
+    localStorage.setItem("favorites", arr);
+    const result = JSON.parse(arr);
+    return result;
+  } else {
+    const favorites = JSON.parse(dataInStorage);
+    return favorites;
+  }
 };
 
 const removeFavorite = (storedData, item) => {
@@ -17,17 +17,15 @@ const removeFavorite = (storedData, item) => {
 };
 
 export const setFavorite = (param) => {
-  verifyFavorites();
-  const isFavorite = getFavorites(param);
-  console.log(isFavorite, "setFavorites");
-  const storedData = JSON.parse(localStorage.getItem("favorites")) || [];
-  const haveInStorage = storedData.find((item) => item.id === param.id);
+  const inStorage = getFavorites();
+  console.log(inStorage, "salve");
+  const haveInStorage = inStorage.find((item) => item.id === param.id);
 
   if (haveInStorage) {
-    const newFavorites = removeFavorite(storedData, param);
+    const newFavorites = removeFavorite(inStorage, param);
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
   } else {
-    const newFavorites = [...storedData, param];
+    const newFavorites = [...inStorage, param];
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
   }
 };

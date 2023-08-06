@@ -11,6 +11,9 @@ const Clothing = () => {
 
   useEffect(() => {
     const inStorage = getFavorites();
+    if (!inStorage) {
+      localStorage.setItem("favorites", []);
+    }
     setFavoriteInStorage(inStorage);
   }, [])
 
@@ -160,7 +163,7 @@ const Clothing = () => {
                     {` R$ ${item.price.toFixed(2)}`}
                   </span>
                   <div className='' type='button' onClick={ () => principalFavorite(clothings[index]) }>
-                      {favoriteInStorage.find((el) => el.name === item.name && el.id === item.id) ?
+                      {favoriteInStorage?.find((el) => el.name === item.name && el.id === item.id) ?
                         <AiFillHeart size={30} color='red'/> :
                         <AiOutlineHeart size={30} />
                       }
