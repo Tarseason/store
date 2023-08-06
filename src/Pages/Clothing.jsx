@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { data } from '../data/data.js';
-import {setFavorite} from  '../utils/favoriteFunc.js'
+import {setFavorite, getFavorites} from  '../utils/favoriteFunc.js'
 
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 const Clothing = () => {
   //   console.log(data);
   const [clothings, setClothings] = useState(data);
+  const [favoriteInStorage, setFavoriteInStorage] = useState([]);
+
+  useEffect(() => {
+    const inStorage = getFavorites();
+    setFavoriteInStorage(inStorage);
+  }, [])
+
+  const principalFavorite = (item) => {
+   setFavorite(item)
+   setFavoriteInStorage(getFavorites())
+   return;
+  }
 
   //   Filter Type
   const filterType = (category) => {
@@ -16,6 +28,8 @@ const Clothing = () => {
       })
     );
   };
+
+  
 
   //   Filter by price
   const filterPrice = (price) => {
@@ -126,7 +140,7 @@ const Clothing = () => {
         </div>
       </div>
 
-      {/* Display foods */}
+      {/* Display Clothings */}
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
         {clothings.map((item, index) => (
           <div
@@ -144,8 +158,11 @@ const Clothing = () => {
                 <span className='bg-rose-500 text-white p-1 rounded-full'>
                   {` R$ ${item.price.toFixed(2)}`}
                 </span>
-              <button className='none' type='button' onClick={ () => setFavorite(clothings[index])}>
-              <AiOutlineHeart size={30} />
+              <button type='button' onClick={ () => principalFavorite(clothings[index]) }>
+              {favoriteInStorage.find((el) => el.name === item.name && el.id === item.id) ?
+                <AiFillHeart size={30} color='red'/> :
+                <AiOutlineHeart size={30}/>
+              }
               </button>
               </p>
             </div>
