@@ -155,15 +155,17 @@ const Clothing = () => {
             <div className='flex-wrap wrap justify-between  px-1 py-2'>
               <p className='font-bold text-sm mx-1 my-2'>{item.name}</p>
               <p className='flex flex-row-reverse'>
-                <span className='bg-rose-500 text-white p-1 rounded-full'>
-                  {` R$ ${item.price.toFixed(2)}`}
-                </span>
-              <button type='button' onClick={ () => principalFavorite(clothings[index]) }>
-              {favoriteInStorage.find((el) => el.name === item.name && el.id === item.id) ?
-                <AiFillHeart size={30} color='red'/> :
-                <AiOutlineHeart size={30}/>
-              }
-              </button>
+              <div className='flex justify-between w-full px-2'>
+                  <span className='bg-rose-500 text-white p-1 rounded-full'>
+                    {` R$ ${item.price.toFixed(2)}`}
+                  </span>
+                  <div className='' type='button' onClick={ () => principalFavorite(clothings[index]) }>
+                      {favoriteInStorage.find((el) => el.name === item.name && el.id === item.id) ?
+                        <AiFillHeart size={30} color='red'/> :
+                        <AiOutlineHeart size={30} />
+                      }
+                  </div>
+              </div>
               </p>
             </div>
           </div>
