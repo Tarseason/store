@@ -1,3 +1,4 @@
+import GComponent from "../components/GComponent";
 import Clothing from "./Clothing";
 import Contact from "./Contact";
 import HeadlineCards from "./HeadLineCards";
@@ -7,6 +8,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <GComponent />
       <HeadlineCards />
       <Clothing />
       <Contact />

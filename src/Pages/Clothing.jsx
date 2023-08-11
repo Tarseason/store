@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { data } from '../data/data.js';
-import {setFavorite, getFavorites} from  '../utils/favoriteFunc.js'
+import { getFavorites } from  '../utils/favoriteFunc.js'
+import ClothingCard from '../components/clothingCard.js';
 
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import {filterPriceSame} from '../utils/filterPrice.js';
 
 const Clothing = () => {
-  //   console.log(data);
   const [clothings, setClothings] = useState(data);
-  const [favoriteInStorage, setFavoriteInStorage] = useState([]);
 
-  useEffect(() => {
+  function isLocalStorage() {
     const inStorage = getFavorites();
     if (!inStorage) {
       localStorage.setItem("favorites", []);
     }
-    setFavoriteInStorage(inStorage);
-  }, [])
-
-  const principalFavorite = (item) => {
-   setFavorite(item)
-   setFavoriteInStorage(getFavorites())
-   return;
+    return;
   }
+
+  isLocalStorage();
 
   //   Filter Type
   const filterType = (category) => {
@@ -36,39 +31,10 @@ const Clothing = () => {
 
   //   Filter by price
   const filterPrice = (price) => {
-    if (price === '$') {
-      setClothings(
-          data.filter((item) => {
-            return item.price <= 50;
-          })
-        );
-        return;
-    }
-
-    if (price === '$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 50 && item.price <= 80;
-        })
-      );
-      return;
-    }
-    if (price === '$$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 80 && item.price <= 120;
-        })
-      );
-      return;
-    }
-    if (price === '$$$$') {
-      setClothings(
-        data.filter((item) => {
-          return item.price > 120   
-        })
-      );
-      return;
-    }
+    const filterSame = filterPriceSame(data, price);
+    console.log(filterSame)
+    setClothings(filterSame)
+    return;
   };
 
   return (
@@ -144,37 +110,17 @@ const Clothing = () => {
       </div>
 
       {/* Display Clothings */}
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
-        {clothings.map((item, index) => (
-          <div
-            key={index}
-            className='border shadow-lg rounded-lg hover:scale-105 duration-300'
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              className='w-full h-[200px] object-cover rounded-t-lg'
-            />
-            <div className='flex-wrap wrap justify-between  px-1 py-2'>
-              <p className='font-bold text-sm mx-1 my-2'>{item.name}</p>
-              <p className='flex flex-row-reverse'>
-              <div className='flex justify-between w-full px-2'>
-                  <span className='bg-rose-500 text-white p-1 rounded-full'>
-                    {` R$ ${item.price.toFixed(2)}`}
-                  </span>
-                  <div className='' type='button' onClick={ () => principalFavorite(clothings[index]) }>
-                      {favoriteInStorage?.find((el) => el.name === item.name && el.id === item.id) ?
-                        <AiFillHeart size={30} color='red'/> :
-                        <AiOutlineHeart size={30} />
-                      }
-                  </div>
-              </div>
-              </p>
-            </div>
-          </div>
-        ))}
+        
+        {/* { 
+          clothings.map((value) => <ClothingCard key={value.id} item={value}/>)
+        } */}
+
+        <div className='w-full border-red-300'>
+        {     
+          clothings.map((value) => <ClothingCard className="max-w-[1640px] m-auto px-4 py-12" key={value.id} item={value}/>)
+        }
+        </div>
       </div>
-    </div>
   );
 };
 
