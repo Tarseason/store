@@ -15,8 +15,8 @@ function NavBar() {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
-      <div className="flex items-center">
+    <div className="h-16 max-w-[1640px] mx-auto flex justify-between items-center p-4">
+      <div className="flex items-center pt-1">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
           <AiOutlineMenu size={30} />
         </div>
@@ -27,7 +27,7 @@ function NavBar() {
         </Link>
       </div>
 
-      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
+      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px] pt-1">
         <AiOutlineSearch size={25} />
         <input
           type="text"
@@ -38,7 +38,7 @@ function NavBar() {
 
       <div>
         <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
-          <BsFillCartFill size={20} /> Carinho
+          <BsFillCartFill size={20} /> Carrinho
         </button>
       </div>
 

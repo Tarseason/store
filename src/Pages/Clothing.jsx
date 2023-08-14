@@ -115,9 +115,9 @@ const Clothing = () => {
           clothings.map((value) => <ClothingCard key={value.id} item={value}/>)
         } */}
 
-        <div className='w-full border-red-300'>
+        <div className='w-full border-red-300 grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
         {     
-          clothings.map((value) => <ClothingCard className="max-w-[1640px] m-auto px-4 py-12" key={value.id} item={value}/>)
+          clothings.map((value) => <ClothingCard key={value.id} item={value}/>)
         }
         </div>
       </div>

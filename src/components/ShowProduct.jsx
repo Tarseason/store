@@ -15,7 +15,7 @@ const ShowProducts = () => {
 
   return (
     <div>
-      <div className='max-w-[1640px] m-auto px-4 py-12'>
+      <div className='max-w-[1640px] mx-auto m-2'>
 
       {/* Filter Row */}
       <div className='flex flex-col lg:flex-row justify-between'>

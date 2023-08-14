@@ -3,10 +3,10 @@ import ShowProducts from "./ShowProduct"
 const News = () => {
   return (
     <div>
-      <div className="max-w-[1640px] mx-auto p-4">
-      <div className="max-h-[500px] relative">
+      <div className="max-w-[1640px] mx-auto m-2 p-1">
+      <div className="max-h-[500px] relative rounded-xl">
         {/* Overlay */}
-        <div className="absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center">
+        <div className="rounded-xl absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center">
           <h1 className="px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
             Rosy <span className="text-rose-300">Fashion</span> com os
           </h1>
@@ -16,7 +16,7 @@ const News = () => {
           </h1>
         </div>
         <img
-          className="w-full max-h-[500px] object-cover"
+          className="rounded-xl w-full max-h-[500px] object-cover"
           src="https://img.freepik.com/fotos-gratis/retrato-de-modelo-feminino-chocado-cobrindo-a-boca-com-a-mao-olhando-com-os-olhos-esbugalhados-esquecendo-se-de-passar-a-roupa-vestida-para-reuniao-de-negocios-pessoas-choque-grande-surpresa_273609-227.jpg?w=360"
           alt="/"
         />

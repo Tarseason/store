@@ -1,6 +1,5 @@
-import GComponent from "../components/GComponent";
 import Clothing from "./Clothing";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 import HeadlineCards from "./HeadLineCards";
 import Hero from "./Hero";
 
@@ -8,10 +7,9 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <GComponent />
       <HeadlineCards />
       <Clothing />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   )
 }
