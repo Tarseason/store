@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   AiOutlineClose,
   AiOutlineMenu,
@@ -7,9 +7,9 @@ import {
   AiFillTag,
   AiFillFire
 } from "react-icons/ai";
-import { BsFillCartFill } from "react-icons/bs";
 import { MdFavorite, MdHelp } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
+import { BsBagHeart } from 'react-icons/bs'
 
 function NavBar() {
   const [nav, setNav] = useState(false);
@@ -37,9 +37,11 @@ function NavBar() {
       </div>
 
       <div>
+          <Link to='/favorites'>
         <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
-          <BsFillCartFill size={20} /> Carrinho
+          <BsBagHeart onClick={() => setNav(!nav)} size={20} className="mr-2" /> Favoritos
         </button>
+          </Link>
       </div>
 
       {/* Mobile Menu */}
@@ -68,9 +70,9 @@ function NavBar() {
 
         <nav>
           <ul className="flex flex-col p-4 text-gray-800">
-            <li className="text-xl py-4 flex">
+            <Link onClick={() => setNav(!nav)} to='/favorites' className="text-xl py-4 flex">
               <MdFavorite size={25} className="mr-4" /> Favoritos
-            </li>
+            </Link>
             <li className="text-xl py-4 flex">
               <AiFillTag size={25} className="mr-4" />
               Promoções

@@ -4,6 +4,7 @@ import BestSellers from "./components/BestSellers";
 import News from "./components/News";
 import Accessories from "./components/Accessories";
 import RootLayout from "./Pages/Root";
+import Favorites from "./Pages/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "acessorios",
         element: <Accessories />,
+      },
+      {
+        path: "favorites",
+        element: <Favorites />,
       },
     ],
   },
